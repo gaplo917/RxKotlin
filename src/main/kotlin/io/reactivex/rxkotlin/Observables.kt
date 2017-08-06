@@ -9,6 +9,7 @@ import io.reactivex.functions.*
  */
 object Observables {
 
+
     inline fun <T1,T2,R> combineLatest(source1: Observable<T1>, source2: Observable<T2>, crossinline combineFunction: (T1, T2) -> R) =
             Observable.combineLatest(source1, source2,
                     BiFunction<T1, T2, R> { t1, t2 -> combineFunction(t1,t2) })!!
@@ -36,6 +37,13 @@ object Observables {
             Observable.combineLatest(source1, source2,source3, source4,
                     Function4{ t1: T1, t2: T2, t3: T3, t4: T4 -> combineFunction(t1,t2, t3, t4) })!!
 
+    /**
+     * Emits `Tuple4<T1,T2,T3,T4>`
+     */
+    inline fun <T1,T2,T3,T4> combineLatest(source1: Observable<T1>, source2: Observable<T2>, source3: Observable<T3>,
+                                             source4: Observable<T4>) =
+            Observable.combineLatest(source1, source2,source3, source4,
+                    Function4{ t1: T1, t2: T2, t3: T3, t4: T4 -> Tuple4(t1,t2, t3, t4) })!!
 
     inline fun <T1,T2,T3,T4,T5,R> combineLatest(source1: Observable<T1>, source2: Observable<T2>,
                                                 source3: Observable<T3>, source4: Observable<T4>,
@@ -43,12 +51,30 @@ object Observables {
             Observable.combineLatest(source1, source2,source3, source4, source5,
                     Function5 { t1: T1, t2: T2, t3: T3, t4: T4, t5: T5 -> combineFunction(t1,t2, t3, t4, t5) })!!
 
+    /**
+     * Emits `Tuple5<T1,T2,T3,T4,T5>`
+     */
+    inline fun <T1,T2,T3,T4,T5> combineLatest(source1: Observable<T1>, source2: Observable<T2>,
+                                                source3: Observable<T3>, source4: Observable<T4>,
+                                                source5: Observable<T5>) =
+            Observable.combineLatest(source1, source2,source3, source4, source5,
+                    Function5 { t1: T1, t2: T2, t3: T3, t4: T4, t5: T5 -> Tuple5(t1,t2, t3, t4, t5) })!!
 
     inline fun <T1,T2,T3,T4,T5,T6,R> combineLatest(source1: Observable<T1>, source2: Observable<T2>,
                                                 source3: Observable<T3>, source4: Observable<T4>,
                                                 source5: Observable<T5>, source6: Observable<T6>, crossinline combineFunction: (T1,T2, T3, T4, T5, T6) -> R) =
             Observable.combineLatest(source1, source2,source3, source4, source5, source6,
                     Function6 { t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6 -> combineFunction(t1,t2, t3, t4, t5, t6) })!!
+
+    /**
+     * Emits `Tuple6<T1,T2,T3,T4,T5,T6>`
+     */
+    inline fun <T1,T2,T3,T4,T5,T6> combineLatest(source1: Observable<T1>, source2: Observable<T2>,
+                                                   source3: Observable<T3>, source4: Observable<T4>,
+                                                   source5: Observable<T5>, source6: Observable<T6>) =
+            Observable.combineLatest(source1, source2,source3, source4, source5, source6,
+                    Function6 { t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6 -> Tuple6(t1,t2, t3, t4, t5, t6) })!!
+
 
     inline fun <T1,T2,T3,T4,T5,T6,T7,R> combineLatest(source1: Observable<T1>, source2: Observable<T2>,
                                                    source3: Observable<T3>, source4: Observable<T4>,
@@ -57,6 +83,15 @@ object Observables {
             Observable.combineLatest(source1, source2,source3, source4, source5, source6, source7,
                     Function7 { t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6, t7: T7 -> combineFunction(t1,t2, t3, t4, t5, t6, t7) })!!
 
+    /**
+     * Emits `Tuple7<T1,T2,T3,T4,T5,T6,T7>`
+     */
+    inline fun <T1,T2,T3,T4,T5,T6,T7> combineLatest(source1: Observable<T1>, source2: Observable<T2>,
+                                                      source3: Observable<T3>, source4: Observable<T4>,
+                                                      source5: Observable<T5>, source6: Observable<T6>,
+                                                      source7: Observable<T7>) =
+            Observable.combineLatest(source1, source2,source3, source4, source5, source6, source7,
+                    Function7 { t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6, t7: T7 -> Tuple7(t1,t2, t3, t4, t5, t6, t7) })!!
 
     inline fun <T1,T2,T3,T4,T5,T6,T7,T8,R> combineLatest(source1: Observable<T1>, source2: Observable<T2>,
                                                       source3: Observable<T3>, source4: Observable<T4>,
@@ -66,6 +101,17 @@ object Observables {
             Observable.combineLatest(source1, source2,source3, source4, source5, source6, source7, source8,
                     Function8 { t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6, t7: T7, t8: T8 -> combineFunction(t1,t2, t3, t4, t5, t6, t7, t8) })!!
 
+    /**
+     * Emits `Tuple8<T1,T2,T3,T4,T5,T6,T7,T8>`
+     */
+    inline fun <T1,T2,T3,T4,T5,T6,T7,T8> combineLatest(source1: Observable<T1>, source2: Observable<T2>,
+                                                         source3: Observable<T3>, source4: Observable<T4>,
+                                                         source5: Observable<T5>, source6: Observable<T6>,
+                                                         source7: Observable<T7>, source8: Observable<T8>) =
+            Observable.combineLatest(source1, source2,source3, source4, source5, source6, source7, source8,
+                    Function8 { t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6, t7: T7, t8: T8 -> Tuple8(t1,t2, t3, t4, t5, t6, t7, t8) })!!
+
+
     inline fun <T1,T2,T3,T4,T5,T6,T7,T8,T9,R> combineLatest(source1: Observable<T1>, source2: Observable<T2>,
                                                          source3: Observable<T3>, source4: Observable<T4>,
                                                          source5: Observable<T5>, source6: Observable<T6>,
@@ -74,6 +120,16 @@ object Observables {
             Observable.combineLatest(source1, source2,source3, source4, source5, source6, source7, source8, source9,
                     Function9 { t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6, t7: T7, t8: T8, t9: T9 -> combineFunction(t1,t2, t3, t4, t5, t6, t7, t8, t9) })!!
 
+    /**
+     * Emits `Tuple8<T1,T2,T3,T4,T5,T6,T7,T9>`
+     */
+    inline fun <T1,T2,T3,T4,T5,T6,T7,T8,T9,R> combineLatest(source1: Observable<T1>, source2: Observable<T2>,
+                                                            source3: Observable<T3>, source4: Observable<T4>,
+                                                            source5: Observable<T5>, source6: Observable<T6>,
+                                                            source7: Observable<T7>, source8: Observable<T8>,
+                                                            source9: Observable<T9>) =
+            Observable.combineLatest(source1, source2,source3, source4, source5, source6, source7, source8, source9,
+                    Function9 { t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6, t7: T7, t8: T8, t9: T9 -> Tuple9(t1,t2, t3, t4, t5, t6, t7, t8, t9) })!!
 
     
     
